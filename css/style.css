@@ -17,15 +17,21 @@ h1 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.26em;
+  color: #3B3B3B;
+  padding-top: 20px;
 }
 
 h2 {
   font-family: 'Libre Baskerville', serif;
   font-style: italic;
+  color: #3B3B3B;
 }
 
 p {
   font-family: 'Libre Baskerville', serif;
+  letter-spacing: .001em;
+  line-height: 1.5em;
+  color: #3B3B3B;
 }
 
 #imageContainer {
@@ -42,13 +48,15 @@ img {
 
 #resultsDisplay {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   font-family: 'Libre Baskerville', serif;
   margin: 0 auto;
   padding: 10px 15px;
 }
+
+
 
 .textualData {
   display: flex;

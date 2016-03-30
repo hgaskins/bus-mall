@@ -25,8 +25,10 @@ img {
 
 #resultsDisplay {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
   margin: 0 auto;
   padding: 10px 15px;
 }
@@ -64,5 +66,12 @@ img {
         justify-content: space-between;
         margin: 0 auto;
         padding: 10px;
+      }
+      .textualData {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
       }
 }

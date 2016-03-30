@@ -1,12 +1,12 @@
 /*
-================
+=================
 calling functions
-================
+=================
 */
 
-/* ++++++++
-calling the showRandomImg function with specific images here. Will need
-to ammend additional images
+/*
+calling the showRandomImg function with specific images here.
+this stays at imageOneTwoThree
 */
 showRandomImg(imageOne);
 showRandomImg(imageTwo);
@@ -19,8 +19,9 @@ functions
 =========
 */
 
-/* +++++++++
+/*
 function to count the number of clicks on imageOne specifically
+stays at imageOneTwoThree.onclick
 */
 imageOne.onclick = function() {
   var srcValue = imageOne.getAttribute('src');
@@ -57,12 +58,14 @@ imageThree.onclick = function() {
   }
 }
 
+
 //
 function imageClicked() {
   if (processClick) {
     totalClicks++;
 
-    //for each addition image add in code to call the image here:
+    //calling showRandomImg within the imageClicked function
+    //this says at three
     showRandomImg(imageOne);
     showRandomImg(imageTwo);
     showRandomImg(imageThree);
@@ -75,15 +78,6 @@ function imageClicked() {
     }
   }
 }
-
-//TESTING REMOVING BELOW CODE
-// //constructor function to make new image objects
-// function makeImageObj(name, path) {
-//   this.name = name;
-//   this.path = path;
-//   this.nShow = 0;
-//   this.nClicks = 0;
-// }
 
 /*
 random number generation to go through amount of images within
@@ -118,6 +112,9 @@ function showResults() {
   paraOne.textContent = "the number of times black-backpack was clicked on " + productArray[0].nClicks;
   paraTwo.textContent = "the number of times black-gloves has been clicked is " + productArray[1].nClicks;
   paraThree.textContent = "the number of times black-purse has been clicked is " + productArray[2].nClicks;
+  paraFour.textContent = "the number of times grey-scarf has been clicked is " + productArray[3].nClicks;
+  paraFive.textContent = "the number of times navy-tote has been clicked is " + productArray[4].nClicks;
+  paraSix.textContent = "the number of times red-tee has been clicked is " + productArray[5].nClicks;
 }
 
 var imageOneCounter = 0;
@@ -128,8 +125,8 @@ event listeners
 ===============
 */
 
-/*++++++
-addin eventListener per imageNUMBER variables set at the top of the js file
+/*
+eventListener per imageNUMBER variables set at the top of the js file
 */
 imageOne.addEventListener("click", imageClicked);
 imageTwo.addEventListener("click", imageClicked);

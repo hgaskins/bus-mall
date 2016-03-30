@@ -105,7 +105,7 @@ function showRandomImg(image) {
 //function to show results
 function showResults() {
   console.log(totalClicks + " this is working yes?");
-  chart.textContent = "the total number of clicks is " + totalClicks + " and this shows how often the Abercrombie cat showed up: " + productArray[0].nShow;
+  chart.textContent = "the total number of clicks is " + totalClicks;
   /* ++++++++++
   add in paraNum.textContent per paragraph element position within HTML DOM
   */
@@ -115,6 +115,10 @@ function showResults() {
   paraFour.textContent = "the number of times grey-scarf has been clicked is " + productArray[3].nClicks;
   paraFive.textContent = "the number of times navy-tote has been clicked is " + productArray[4].nClicks;
   paraSix.textContent = "the number of times red-tee has been clicked is " + productArray[5].nClicks;
+  paraSeven.textContent = "the number of times weekend-bag has been clicked is " + productArray[6].nClicks;
+  paraEight.textContent = "the number of times white-sandles has been clicked is " + productArray[7].nClicks;
+  paraNine.textContent = "the number of times white-tank has been clicked is " + productArray[8].nClicks;
+  paraTen.textContent = "the number of times white-wool-hat has been clicked is " + productArray[9].nClicks;
 }
 
 var imageOneCounter = 0;

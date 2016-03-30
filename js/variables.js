@@ -38,6 +38,12 @@ var paraThree = document.getElementById('paraThree');
 var paraFour = document.getElementById('paraFour');
 var paraFive = document.getElementById('paraFive');
 var paraSix = document.getElementById('paraSix');
+var paraSeven = document.getElementById('paraSeven');
+var paraEight = document.getElementById('paraEight');
+var paraNine = document.getElementById('paraNine');
+var paraTen = document.getElementById('paraTen');
+
+
 //TESTING ADDING BELOW CODE IN
 //constructor function to make new image objects
 function makeImageObj(name, path) {

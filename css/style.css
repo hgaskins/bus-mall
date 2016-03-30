@@ -11,6 +11,7 @@
   max-width: 1000px;
 }
 
+
 #imageContainer {
   display: flex;
   align-items: center;
@@ -20,18 +21,31 @@
 
 img {
   padding: 10px;
+  margin: 0 auto;
 }
 
 #resultsDisplay {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
+  padding: 10px 15px;
+}
+
+#chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10px 15px;
 }
 
 #paras {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  margin: 0 auto;
+  padding: 10px 15px;
 }
 
 /* ===========================

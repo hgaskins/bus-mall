@@ -121,8 +121,6 @@ function showResults() {
   paraTen.textContent = "the number of times white-wool-hat has been clicked is " + productArray[9].nClicks;
 }
 
-var imageOneCounter = 0;
-
 /*
 ===============
 event listeners

@@ -1,3 +1,52 @@
 #myButton, #voteMore {
   visibility: hidden;
 }
+
+.wrap {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  /*padding: 20px;*/
+  max-width: 1000px;
+}
+
+#imageContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+img {
+  padding: 10px;
+}
+
+#resultsDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#paras {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+/* ===========================
+  Media Queries
+============================= */
+
+/*@media (min-width: 769px) {
+      body {
+      width: 900px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    .container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+}*/

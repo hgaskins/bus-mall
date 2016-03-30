@@ -23,6 +23,8 @@ var totalClicks = 0;
 
 var processClick = true;
 
+var imageOneCounter = 0;
+
 /*
 variables capturing the paragraph slots
 for textContent addition on show results

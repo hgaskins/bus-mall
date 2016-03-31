@@ -54,30 +54,92 @@ imageThree.onclick = function() {
 }
 
 
+//++++++++++++++++++++moved from canvas
+
+var barData = {
+	labels : [], //these are our image titles or this.name
+	datasets : [
+		{
+			fillColor : 'rgba(59,59,59,0.4)',
+			strokeColor : 'rgba(29,29,29,0.7)',
+			data : [] // clicks
+		}
+	]
+}
+
+
+
+var barDataPercent = {
+  labels : [], //these are our image titles or this.name
+  datasets : [
+    {
+      fillColor : 'rgba(59,59,59,0.4)',
+      strokeColor : 'rgba(29,29,29,0.7)',
+      data : [] // clicks
+    }
+  ]
+}
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++
+//setting localStorage for total clicks where total clicks is initialized
+var storedBarData = localStorage.getItem("barData");
+//if there are stored clicks then equate those to the total click count
+//else start at 0
+if (storedBarData) {
+    var parseData = JSON.parse(storedBarData);
+    barData = parseData;
+} else {
+  //putting bar data into local storage in JSON format
+  // localStorage.setItem("barData", JSON.stringify(barData));
+}
+
+
+
+
 
 function imageClicked() {
   if (processClick) {
-    totalClicks++;
+    //++++++++++++++++++++++++++++++++
+    //moving these inside of function so localStorage can see them
+    barData.datasets[0].data = yAxisArray;
+    barData.labels = labelArray;
+    barDataPercent.labels = labelArray;
+    barDataPercent.datasets[0].data = percentArray;
 
-    showRandomImg(imageOne);
-    showRandomImg(imageTwo);
-    showRandomImg(imageThree);
+    //+++++++++++++++++++++++++++++++++++++++++
+    //updating the data for charts
+    localStorage.setItem("totalClicks", totalClicks);
+    localStorage.setItem("barData", JSON.stringify(barData));
 
-    if (totalClicks >= clicks && x && totalClicks < 24) {
-      //code to display hidden button
-      displayButton.setAttribute('style','visibility:visible');
-      voteMoreButton.setAttribute('style','visibility:visible');
-      processClick = false;
-    } else if (totalClicks === 24) {
-      x = false;
-      voteMoreButton.setAttribute('style', 'visibility:hidden');
-      console.log(totalClicks);
-      processClick = false;
-      // voteMoreButton <-- remove event listener here
-      voteMoreButton.removeEventListener('click', eightMore);
-      resetButton.setAttribute('style','visibility:visible');
-      showResults();
-    }
+
+      totalClicks++;
+
+      showRandomImg(imageOne);
+      showRandomImg(imageTwo);
+      showRandomImg(imageThree);
+
+      if (totalClicks >= clicks && x && totalClicks < 24) {
+        //code to display hidden button
+        displayButton.setAttribute('style','visibility:visible');
+        voteMoreButton.setAttribute('style','visibility:visible');
+        processClick = false;
+      } else if (totalClicks === 24) {
+        x = false;
+        voteMoreButton.setAttribute('style', 'visibility:hidden');
+        console.log(totalClicks);
+        processClick = false;
+        // voteMoreButton <-- remove event listener here
+        voteMoreButton.removeEventListener('click', eightMore);
+        resetButton.setAttribute('style','visibility:visible');
+        //
+        // //destroys charts
+        // clicksChartGlobal.destroy();
+        // percentChartGlobal.destroy();
+
+        showResults();
+      }
   }
 }
 
@@ -106,6 +168,9 @@ function eightMore() {
   voteMoreButton.setAttribute('style','visibility:hidden');
   displayButton.setAttribute('style','visibility:hidden');
   displayButton.removeEventListener('click', showResults);
+  //destroys charts
+  clicksChartGlobal.destroy();
+  percentChartGlobal.destroy();
 }
 
 function newVoteRound() {

@@ -22,19 +22,30 @@ var chart = document.getElementById('chart');
 var productArray = [];
 
 var totalClicks = 0;
+
+//++++++++++++++++++++++++++++++++++
+//setting localStorage for total clicks where total clicks is initialized
+var storedClicks = localStorage.getItem("totalClicks");
+//if there are stored clicks then equate those to the total click count
+//else start at 0
+if (storedClicks) {
+    totalClicks = storedClicks;
+} else {
+  localStorage.setItem("totalClicks", totalClicks);
+}
+
+
 var processClick = true;
 var clicks = 16;
 var x = true;
 
+
+//++++++++++++++++ remove this
 //variables to set clicksChart and percentChart to be global in scope
 var clicksChartGlobal;
 var percentChartGlobal;
 
 
-/*
-variables capturing the paragraph slots
-for textContent addition on show results
-*/
 
 /* ++++++
 variables for paragraph elements to be added per

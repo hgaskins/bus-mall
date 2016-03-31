@@ -31,9 +31,9 @@ var makeYAxis = function() {
   }
 }
 
-//++++++++++++++++++++
 //adding separate
 var makePercentChart = function() {
+  localStorage.setItem("barData", JSON.stringify(barData));
   for (var i = 0; i < productArray.length; i++) {
     var x = Math.floor((productArray[i].nClicks/productArray[i].nShow)*100);
     percentArray.push(x);
@@ -41,19 +41,17 @@ var makePercentChart = function() {
 }
 
 
+
 //function to show results
 //moved showResults function from function section
 function showResults() {
-  //++++++++starting
+
 
   makePercentChart();
-  barDataPercent.datasets[0].data = percentArray;
 
   makeBarLabels();
-  barData.labels = labelArray;
-  barDataPercent.labels = labelArray;
+
   makeYAxis();
-  barData.datasets[0].data = yAxisArray;
 
   displayButton.setAttribute('style','visibility:hidden');
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -70,26 +68,4 @@ function showResults() {
   percentChartGlobal = new Chart(percentChart).Bar(barDataPercent);
   percentChart = percentChartGlobal;
 
-}
-
-var barData = {
-	labels : [], //these are our image titles or this.name
-	datasets : [
-		{
-			fillColor : 'rgba(59,59,59,0.4)',
-			strokeColor : 'rgba(29,29,29,0.7)',
-			data : [] // clicks
-		}
-	]
-}
-
-var barDataPercent = {
-  labels : [], //these are our image titles or this.name
-  datasets : [
-    {
-      fillColor : 'rgba(59,59,59,0.4)',
-      strokeColor : 'rgba(29,29,29,0.7)',
-      data : [] // clicks
-    }
-  ]
 }

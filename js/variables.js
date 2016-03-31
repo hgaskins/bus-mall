@@ -15,6 +15,8 @@ var imageThree = document.getElementById('productImageThree');
 
 var displayButton = document.getElementById('myButton');
 var voteMoreButton = document.getElementById('voteMore');
+var resetButton = document.getElementById('resetButton');
+
 var chart = document.getElementById('chart');
 
 var productArray = [];
@@ -23,7 +25,19 @@ var totalClicks = 0;
 
 var processClick = true;
 
+
+//?????????????
 var imageOneCounter = 0;
+
+//change to 16!
+var clicks = 16;
+
+var x = true;
+
+//variables to set clicksChart and percentChart to be global in scope
+var clicksChartGlobal;
+var percentChartGlobal;
+
 
 /*
 variables capturing the paragraph slots
@@ -46,7 +60,11 @@ var paraNine = document.getElementById('paraNine');
 var paraTen = document.getElementById('paraTen');
 
 
-//TESTING ADDING BELOW CODE IN
+/*
+====================
+constructor function
+====================
+*/
 //constructor function to make new image objects
 function makeImageObj(name, path) {
   this.name = name;

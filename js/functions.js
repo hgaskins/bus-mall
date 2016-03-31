@@ -29,7 +29,6 @@ imageOne.onclick = function() {
   for (var i = 0; i < productArray.length; i++) {
     if (srcValue == productArray[i].path) {
       productArray[i].nClicks++;
-      console.log(productArray[i].path + " #$% " + productArray[i].nClicks);
     }
   }
 }
@@ -41,7 +40,6 @@ imageTwo.onclick = function() {
   for (var i = 0; i < productArray.length; i++) {
     if (srcValue == productArray[i].path) {
       productArray[i].nClicks++;
-      console.log(productArray[i].path + " #$% " + productArray[i].nClicks);
     }
   }
 }
@@ -53,7 +51,6 @@ imageThree.onclick = function() {
   for (var i = 0; i < productArray.length; i++) {
     if (srcValue == productArray[i].path) {
       productArray[i].nClicks++;
-      console.log(productArray[i].path + " #$% " + productArray[i].nClicks);
     }
   }
 }
@@ -64,17 +61,25 @@ function imageClicked() {
   if (processClick) {
     totalClicks++;
 
-    //calling showRandomImg within the imageClicked function
-    //this says at three
+    //for each addition image add in code to call the image here:
     showRandomImg(imageOne);
     showRandomImg(imageTwo);
     showRandomImg(imageThree);
 
-    if (totalClicks >= 16) {
+    if (totalClicks >= clicks && x && totalClicks < 24) {
       //code to display hidden button
       displayButton.setAttribute('style','visibility:visible');
       voteMoreButton.setAttribute('style','visibility:visible');
       processClick = false;
+    } else if (totalClicks === 24) {
+      x = false;
+      voteMoreButton.setAttribute('style', 'visibility:hidden');
+      console.log(totalClicks);
+      processClick = false;
+      // voteMoreButton <-- remove event listener here
+      voteMoreButton.removeEventListener('click', eightMore);
+      resetButton.setAttribute('style','visibility:visible');
+      showResults();
     }
   }
 }
@@ -90,9 +95,6 @@ function randomImageIndex() {
 
 //function to display random image from list
 function showRandomImg(image) {
-  // var clickCount = newImage.getAttribute("src");
-  // console.log(clickCount);
-
 
   //replacing image function
   var n = randomImageIndex();
@@ -100,26 +102,54 @@ function showRandomImg(image) {
   productArray[n].nShow++;
 }
 
-
-
-//function to show results
-function showResults() {
-  console.log(totalClicks + " this is working yes?");
-  chart.textContent = "the total number of clicks is " + totalClicks;
-  /* ++++++++++
-  add in paraNum.textContent per paragraph element position within HTML DOM
-  */
-  paraOne.textContent = "the number of times black-backpack was clicked on " + productArray[0].nClicks;
-  paraTwo.textContent = "the number of times black-gloves has been clicked is " + productArray[1].nClicks;
-  paraThree.textContent = "the number of times black-purse has been clicked is " + productArray[2].nClicks;
-  paraFour.textContent = "the number of times grey-scarf has been clicked is " + productArray[3].nClicks;
-  paraFive.textContent = "the number of times navy-tote has been clicked is " + productArray[4].nClicks;
-  paraSix.textContent = "the number of times red-tee has been clicked is " + productArray[5].nClicks;
-  paraSeven.textContent = "the number of times weekend-bag has been clicked is " + productArray[6].nClicks;
-  paraEight.textContent = "the number of times white-sandles has been clicked is " + productArray[7].nClicks;
-  paraNine.textContent = "the number of times white-tank has been clicked is " + productArray[8].nClicks;
-  paraTen.textContent = "the number of times white-wool-hat has been clicked is " + productArray[9].nClicks;
+//function to implement vote more button disappearing after clicking and allow for an additional 8 clicks
+function eightMore() {
+  clicks = 24;
+  processClick = true;
+  voteMoreButton.setAttribute('style','visibility:hidden');
+  displayButton.setAttribute('style','visibility:hidden');
+  displayButton.removeEventListener('click', showResults);
 }
+
+function newVoteRound() {
+
+  //destroys charts
+  clicksChartGlobal.destroy();
+  percentChartGlobal.destroy();
+
+  //resets all global variables
+  totalClicks = 0;
+  console.log(totalClicks);
+  processClick = true;
+  clicks = 16;
+  x = true;
+  console.log(clicks);
+  clicksChartGlobal = 0;
+  percentChartGlobal = 0;
+
+  //resets all image object's counters
+  for (var i = 0; i < productArray.length; i++) {
+    productArray[i].nClicks = 0;
+    productArray[i].nShow = 0;
+  }
+
+  //hides reset button
+  resetButton.setAttribute('style','visibility:hidden');
+
+  //repopulate image spaces
+  showRandomImg(imageOne);
+  showRandomImg(imageTwo);
+  showRandomImg(imageThree);
+
+  //rest chart data objects
+  barData.labels = [];
+  barDataPercent.labels = [];
+
+  //add back in eventListeners
+  displayButton.addEventListener('click', showResults);
+  voteMoreButton.addEventListener('click', eightMore);
+}
+
 
 /*
 ===============
@@ -135,3 +165,8 @@ imageTwo.addEventListener("click", imageClicked);
 imageThree.addEventListener("click", imageClicked);
 
 displayButton.addEventListener("click", showResults);
+
+//adding eventListener for vote more button
+voteMoreButton.addEventListener("click", eightMore);
+
+resetButton.addEventListener("click", newVoteRound);

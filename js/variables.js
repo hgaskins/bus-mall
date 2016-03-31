@@ -22,16 +22,8 @@ var chart = document.getElementById('chart');
 var productArray = [];
 
 var totalClicks = 0;
-
 var processClick = true;
-
-
-//?????????????
-var imageOneCounter = 0;
-
-//change to 16!
 var clicks = 16;
-
 var x = true;
 
 //variables to set clicksChart and percentChart to be global in scope

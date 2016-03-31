@@ -22,7 +22,6 @@ var makeBarLabels = function() {
   for (var i = 0; i < productArray.length; i++) {
     labelArray[i] = productArray[i].name;
   }
-
 }
 
 //function for chart's y axis or number of clicks
@@ -36,9 +35,7 @@ var makeYAxis = function() {
 //adding separate
 var makePercentChart = function() {
   for (var i = 0; i < productArray.length; i++) {
-
     var x = Math.floor((productArray[i].nClicks/productArray[i].nShow)*100);
-
     percentArray.push(x);
   }
 }
@@ -61,7 +58,7 @@ function showResults() {
   displayButton.setAttribute('style','visibility:hidden');
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //placed invocation of bar chart within showResults function
-  var clicksChart = document.getElementById("clicksChart").getContext("2d");
+  var clicksChart = document.getElementById('clicksChart').getContext('2d');
   //+++++++++++++++++++++++++
   //asssigning new chart to global variable so we can call destroy method on it
   clicksChartGlobal = new Chart(clicksChart).Bar(barData);
@@ -69,7 +66,7 @@ function showResults() {
 
 
   //chart variable for barDataPercent
-  var percentChart = document.getElementById("percentChart").getContext("2d");
+  var percentChart = document.getElementById('percentChart').getContext('2d');
   percentChartGlobal = new Chart(percentChart).Bar(barDataPercent);
   percentChart = percentChartGlobal;
 
@@ -79,8 +76,8 @@ var barData = {
 	labels : [], //these are our image titles or this.name
 	datasets : [
 		{
-			fillColor : "rgba(73,188,170,0.4)",
-			strokeColor : "rgba(72,174,209,0.4)",
+			fillColor : 'rgba(59,59,59,0.4)',
+			strokeColor : 'rgba(29,29,29,0.7)',
 			data : [] // clicks
 		}
 	]
@@ -90,8 +87,8 @@ var barDataPercent = {
   labels : [], //these are our image titles or this.name
   datasets : [
     {
-      fillColor : "rgba(73,188,170,0.4)",
-      strokeColor : "rgba(72,174,209,0.4)",
+      fillColor : 'rgba(59,59,59,0.4)',
+      strokeColor : 'rgba(29,29,29,0.7)',
       data : [] // clicks
     }
   ]

@@ -20,8 +20,8 @@ functions
 */
 
 /*
-function to count the number of clicks on imageOne specifically
-stays at imageOneTwoThree.onclick
+functions below to count the number of clicks on images.
+to stat at three image.onclick functions, one for each image space
 */
 imageOne.onclick = function() {
   var srcValue = imageOne.getAttribute('src');
@@ -33,7 +33,6 @@ imageOne.onclick = function() {
   }
 }
 
-//function to count the number of clicks on imageTwo specifically
 imageTwo.onclick = function() {
   var srcValue = imageTwo.getAttribute('src');
 
@@ -44,7 +43,6 @@ imageTwo.onclick = function() {
   }
 }
 
-//function to count the number of clicks on imageThree specifically
 imageThree.onclick = function() {
   var srcValue = imageThree.getAttribute('src');
 
@@ -56,12 +54,11 @@ imageThree.onclick = function() {
 }
 
 
-//
+
 function imageClicked() {
   if (processClick) {
     totalClicks++;
 
-    //for each addition image add in code to call the image here:
     showRandomImg(imageOne);
     showRandomImg(imageTwo);
     showRandomImg(imageThree);
@@ -150,23 +147,16 @@ function newVoteRound() {
   voteMoreButton.addEventListener('click', eightMore);
 }
 
-
 /*
 ===============
 event listeners
 ===============
 */
 
-/*
-eventListener per imageNUMBER variables set at the top of the js file
-*/
 imageOne.addEventListener("click", imageClicked);
 imageTwo.addEventListener("click", imageClicked);
 imageThree.addEventListener("click", imageClicked);
 
 displayButton.addEventListener("click", showResults);
-
-//adding eventListener for vote more button
 voteMoreButton.addEventListener("click", eightMore);
-
 resetButton.addEventListener("click", newVoteRound);

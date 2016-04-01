@@ -15,20 +15,37 @@ var imageThree = document.getElementById('productImageThree');
 
 var displayButton = document.getElementById('myButton');
 var voteMoreButton = document.getElementById('voteMore');
+var resetButton = document.getElementById('resetButton');
+
 var chart = document.getElementById('chart');
 
 var productArray = [];
 
 var totalClicks = 0;
 
+//++++++++++++++++++++++++++++++++++
+//setting localStorage for total clicks where total clicks is initialized
+var storedClicks = localStorage.getItem("totalClicks");
+//if there are stored clicks then equate those to the total click count
+//else start at 0
+if (storedClicks) {
+    totalClicks = storedClicks;
+} else {
+  localStorage.setItem("totalClicks", totalClicks);
+}
+
+
 var processClick = true;
+var clicks = 16;
+var x = true;
 
-var imageOneCounter = 0;
 
-/*
-variables capturing the paragraph slots
-for textContent addition on show results
-*/
+//++++++++++++++++ remove this
+//variables to set clicksChart and percentChart to be global in scope
+var clicksChartGlobal;
+var percentChartGlobal;
+
+
 
 /* ++++++
 variables for paragraph elements to be added per
@@ -46,7 +63,11 @@ var paraNine = document.getElementById('paraNine');
 var paraTen = document.getElementById('paraTen');
 
 
-//TESTING ADDING BELOW CODE IN
+/*
+====================
+constructor function
+====================
+*/
 //constructor function to make new image objects
 function makeImageObj(name, path) {
   this.name = name;

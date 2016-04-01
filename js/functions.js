@@ -20,8 +20,8 @@ functions
 */
 
 /*
-function to count the number of clicks on imageOne specifically
-stays at imageOneTwoThree.onclick
+functions below to count the number of clicks on images.
+to stat at three image.onclick functions, one for each image space
 */
 imageOne.onclick = function() {
   var srcValue = imageOne.getAttribute('src');
@@ -29,53 +29,117 @@ imageOne.onclick = function() {
   for (var i = 0; i < productArray.length; i++) {
     if (srcValue == productArray[i].path) {
       productArray[i].nClicks++;
-      console.log(productArray[i].path + " #$% " + productArray[i].nClicks);
     }
   }
 }
 
-//function to count the number of clicks on imageTwo specifically
 imageTwo.onclick = function() {
   var srcValue = imageTwo.getAttribute('src');
 
   for (var i = 0; i < productArray.length; i++) {
     if (srcValue == productArray[i].path) {
       productArray[i].nClicks++;
-      console.log(productArray[i].path + " #$% " + productArray[i].nClicks);
     }
   }
 }
 
-//function to count the number of clicks on imageThree specifically
 imageThree.onclick = function() {
   var srcValue = imageThree.getAttribute('src');
 
   for (var i = 0; i < productArray.length; i++) {
     if (srcValue == productArray[i].path) {
       productArray[i].nClicks++;
-      console.log(productArray[i].path + " #$% " + productArray[i].nClicks);
     }
   }
 }
 
 
-//
+//++++++++++++++++++++moved from canvas
+
+var barData = {
+	labels : [], //these are our image titles or this.name
+	datasets : [
+		{
+			fillColor : 'rgba(59,59,59,0.4)',
+			strokeColor : 'rgba(29,29,29,0.7)',
+			data : [] // clicks
+		}
+	]
+}
+
+
+
+var barDataPercent = {
+  labels : [], //these are our image titles or this.name
+  datasets : [
+    {
+      fillColor : 'rgba(59,59,59,0.4)',
+      strokeColor : 'rgba(29,29,29,0.7)',
+      data : [] // clicks
+    }
+  ]
+}
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++
+//setting localStorage for total clicks where total clicks is initialized
+var storedBarData = localStorage.getItem("barData");
+//if there are stored clicks then equate those to the total click count
+//else start at 0
+if (storedBarData) {
+    var parseData = JSON.parse(storedBarData);
+    barData = parseData;
+} else {
+  //putting bar data into local storage in JSON format
+  // localStorage.setItem("barData", JSON.stringify(barData));
+}
+
+
+
+
+
 function imageClicked() {
   if (processClick) {
-    totalClicks++;
+    //++++++++++++++++++++++++++++++++
+    //moving these inside of function so localStorage can see them
+    barData.datasets[0].data = yAxisArray;
+    barData.labels = labelArray;
+    barDataPercent.labels = labelArray;
+    barDataPercent.datasets[0].data = percentArray;
 
-    //calling showRandomImg within the imageClicked function
-    //this says at three
-    showRandomImg(imageOne);
-    showRandomImg(imageTwo);
-    showRandomImg(imageThree);
+    //+++++++++++++++++++++++++++++++++++++++++
+    //updating the data for charts
+    localStorage.setItem("totalClicks", totalClicks);
+    localStorage.setItem("barData", JSON.stringify(barData));
 
-    if (totalClicks >= 16) {
-      //code to display hidden button
-      displayButton.setAttribute('style','visibility:visible');
-      voteMoreButton.setAttribute('style','visibility:visible');
-      processClick = false;
-    }
+
+      totalClicks++;
+
+      showRandomImg(imageOne);
+      showRandomImg(imageTwo);
+      showRandomImg(imageThree);
+
+      if (totalClicks >= clicks && x && totalClicks < 24) {
+        //code to display hidden button
+        displayButton.setAttribute('style','visibility:visible');
+        voteMoreButton.setAttribute('style','visibility:visible');
+        processClick = false;
+      } else if (totalClicks === 24) {
+        x = false;
+        voteMoreButton.setAttribute('style', 'visibility:hidden');
+        console.log(totalClicks);
+        processClick = false;
+        // voteMoreButton <-- remove event listener here
+        voteMoreButton.removeEventListener('click', eightMore);
+        resetButton.setAttribute('style','visibility:visible');
+        //
+        // //destroys charts
+        // clicksChartGlobal.destroy();
+        // percentChartGlobal.destroy();
+
+        showResults();
+      }
   }
 }
 
@@ -90,9 +154,6 @@ function randomImageIndex() {
 
 //function to display random image from list
 function showRandomImg(image) {
-  // var clickCount = newImage.getAttribute("src");
-  // console.log(clickCount);
-
 
   //replacing image function
   var n = randomImageIndex();
@@ -100,25 +161,55 @@ function showRandomImg(image) {
   productArray[n].nShow++;
 }
 
+//function to implement vote more button disappearing after clicking and allow for an additional 8 clicks
+function eightMore() {
+  clicks = 24;
+  processClick = true;
+  voteMoreButton.setAttribute('style','visibility:hidden');
+  displayButton.setAttribute('style','visibility:hidden');
+  displayButton.removeEventListener('click', showResults);
+  //destroys charts here as well ¯\_(ツ)_/¯ 
+  clicksChartGlobal.destroy();
+  percentChartGlobal.destroy();
+}
 
+function newVoteRound() {
 
-//function to show results
-function showResults() {
-  console.log(totalClicks + " this is working yes?");
-  chart.textContent = "the total number of clicks is " + totalClicks;
-  /* ++++++++++
-  add in paraNum.textContent per paragraph element position within HTML DOM
-  */
-  paraOne.textContent = "the number of times black-backpack was clicked on " + productArray[0].nClicks;
-  paraTwo.textContent = "the number of times black-gloves has been clicked is " + productArray[1].nClicks;
-  paraThree.textContent = "the number of times black-purse has been clicked is " + productArray[2].nClicks;
-  paraFour.textContent = "the number of times grey-scarf has been clicked is " + productArray[3].nClicks;
-  paraFive.textContent = "the number of times navy-tote has been clicked is " + productArray[4].nClicks;
-  paraSix.textContent = "the number of times red-tee has been clicked is " + productArray[5].nClicks;
-  paraSeven.textContent = "the number of times weekend-bag has been clicked is " + productArray[6].nClicks;
-  paraEight.textContent = "the number of times white-sandles has been clicked is " + productArray[7].nClicks;
-  paraNine.textContent = "the number of times white-tank has been clicked is " + productArray[8].nClicks;
-  paraTen.textContent = "the number of times white-wool-hat has been clicked is " + productArray[9].nClicks;
+  //destroys charts
+  clicksChartGlobal.destroy();
+  percentChartGlobal.destroy();
+
+  //resets all global variables
+  totalClicks = 0;
+  console.log(totalClicks);
+  processClick = true;
+  clicks = 16;
+  x = true;
+  console.log(clicks);
+  clicksChartGlobal = 0;
+  percentChartGlobal = 0;
+
+  //resets all image object's counters
+  for (var i = 0; i < productArray.length; i++) {
+    productArray[i].nClicks = 0;
+    productArray[i].nShow = 0;
+  }
+
+  //hides reset button
+  resetButton.setAttribute('style','visibility:hidden');
+
+  //repopulate image spaces
+  showRandomImg(imageOne);
+  showRandomImg(imageTwo);
+  showRandomImg(imageThree);
+
+  //rest chart data objects
+  barData.labels = [];
+  barDataPercent.labels = [];
+
+  //add back in eventListeners
+  displayButton.addEventListener('click', showResults);
+  voteMoreButton.addEventListener('click', eightMore);
 }
 
 /*
@@ -127,11 +218,10 @@ event listeners
 ===============
 */
 
-/*
-eventListener per imageNUMBER variables set at the top of the js file
-*/
 imageOne.addEventListener("click", imageClicked);
 imageTwo.addEventListener("click", imageClicked);
 imageThree.addEventListener("click", imageClicked);
 
 displayButton.addEventListener("click", showResults);
+voteMoreButton.addEventListener("click", eightMore);
+resetButton.addEventListener("click", newVoteRound);

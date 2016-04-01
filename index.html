@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+      <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic|Raleway:700' rel='stylesheet' type='text/css'>
         <meta charset="utf-8" />
         <title>busmall</title>
         <link rel="stylesheet" href="css/normalize.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="css/skeleton.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
-
     </head>
-    <body>
+    <body class="fade-in">
       <div class="wrap">
         <header class="header">
+          <nav class="index-nav">
+            <a href="home.html">home</a>
+          </nav>
           <h1>busmall</h1>
           <h2>market research</h2>
         </header>
+        <!-- <div class="intro">
+          <h3>Thanks for stopping by. Check out the products below and let us know what you think. Your insights help us improve.</h3>
+        </div> -->
         <div id="imageContainer">
-          <img src="" alt="" id="productImageOne" width="300" height="300"/>
-          <img src="" alt="" id="productImageTwo"width="300" height="300"/>
-          <img src="" alt="" id="productImageThree"width="300" height="300"/>
-          <!-- <input id="myButton" type="button" name="TBD" value="show results"></input> -->
+          <div class="photo-container">
+            <img src="" alt="" id="productImageOne" width="300" height="300"/>
+          </div>
+          <div class="photo-container">
+            <img src="" alt="" id="productImageTwo"width="300" height="300"/>
+          </div>
+          <div class="photo-container">
+            <img src="" alt="" id="productImageThree"width="300" height="300"/>
+          </div>
         </div>
         <div class="textualData">
           <div id="resultsDisplay">
             <input id="myButton" type="button" name="TBD" value="show results"></input>
             <input id="voteMore" type="button" name="TBD" value="vote more"></input>
+            <input id="resetButton" type="button" name="TBD" value="vote another round?"></input>
           </div>
           <div id="chart">
-            <!-- to add chart in wednesday -->
+            <canvas id="clicksChart" width="300" height="300"></canvas>
+            <canvas id="percentChart" width="300" height="300"></canvas>
           </div>
-          <div id="paras">
+          <nav class="index-nav-two">
+            <a href="home.html">landing</a>
+          </nav>
+          <!-- <div id="paras">
             <p id="paraOne"></p>
             <p id="paraTwo"></p>
             <p id="paraThree"></p>
@@ -39,27 +55,10 @@
             <p id="paraEight"></p>
             <p id="paraNine"></p>
             <p id="paraTen"></p>
-          </div>
+          </div> -->
         </div>
-        <div id="resultsDisplay">
-          <input id="myButton" type="button" name="TBD" value="show results"></input>
-          <input id="voteMore" type="button" name="TBD" value="vote more"></input>
-        </div>
-        <div id="chart">
-          <!-- to add chart in wednesday -->
-        </div>
-        <div id="paras">
-          <p id="paraOne"></p>
-          <p id="paraTwo"></p>
-          <p id="paraThree"></p>
-          <p id="paraFour"></p>
-          <p id="paraFive"></p>
-          <p id="paraSix"></p>
-          <p id="paraSeven"></p>
-          <p id="paraEight"></p>
-          <p id="paraNine"></p>
-          <p id="paraTen"></p>
-        </div>
+        <script src="js/Chart.js"></script>
+        <script src="js/canvas.js"></script>
         <script src="js/variables.js"></script>
         <script src="js/arrays.js"></script>
         <script src="js/functions.js"></script>

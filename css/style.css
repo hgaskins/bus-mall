@@ -164,7 +164,7 @@ img:hover {
 /*for the overlay over background image*/
 .landing-wrap {
   width: 100%;
-  height: 1228px;
+  height: 1728px;
   background-color: rgba(204,204,204,0.85);
   position: relative;
   top: 0;
@@ -202,11 +202,12 @@ a {
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Raleway', sans-serif;
-  letter-spacing: .5em;
+  letter-spacing: 0.5em;
   color: #505050;
   border: 1px solid #fff;
   background: #fff;
   padding: 10px 10px;
+  padding-left: 16px;
   margin: 0 auto;
   text-align: center;
   line-height: 15px;

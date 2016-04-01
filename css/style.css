@@ -1,6 +1,41 @@
 #myButton, #voteMore, #resetButton {
   visibility: hidden;
+  transition-duration: .4s;
+  transition-property: all;
 }
+
+/*keyframe and code for fade in effect*/
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 0.5s;
+  -moz-animation:fadeIn ease-in 0.5s;
+  animation:fadeIn ease-in 0.5s;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:0.5s;
+  -moz-animation-duration:0.5s;
+  animation-duration:0.5s;
+
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+
+#myButton:hover,
+#voteMore:hover,
+#resetButton:hover {
+  background: #696969;
+  color: #fff;
+}
+
 
 * {
   box-sizing: border-box;
@@ -10,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-flow: column; wrap;
+  flex-flow: column wrap;
   margin: 0 auto;
   /*padding: 20px;*/
   max-width: 1000px;
@@ -107,6 +142,103 @@ img {
   justify-content: center;
   margin: 0 auto;
   padding: 10px 15px;
+}
+
+.landing {
+  background: url(../img/background-header.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+/*for the overlay over background image*/
+.landing-wrap {
+  width: 100%;
+  height: 1228px;
+  background-color: rgba(204,204,204,0.85);
+  position: relative;
+  top: 0;
+
+}
+
+.landing-header {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.landing-header > h1 {
+  font-size: 60px;
+}
+
+nav {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 50px;
+}
+
+
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: .5em;
+  color: #505050;
+  border: 1px solid #fff;
+  background: #fff;
+  padding: 10px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 15px;
+  transition-duration: 0.7s;
+
+}
+
+.inline-link {
+  text-decoration: none;
+  background: none;
+  border: none;
+  text-transform: none;
+  padding: none;
+  letter-spacing: .05em;
+  font-family: 'Libre Baskerville', serif;
+  line-height: 2em;
+}
+
+.nav a:hover {
+  color: #fff;
+  background-color: #505050;
+  border-radius: 40px;
+}
+
+.nav a:active {
+
+}
+
+.landing-text {
+  width: 60%;
+  margin: 0 auto;
+  font-family: 'Libre Baskerville', serif;
+  padding-top: 40px;
+}
+
+
+
+.landing-text > p {
+  color: #505050;
+  letter-spacing: .05em;
+  line-height: 2em;
+}
+
+.index-nav > a {
+  margin: 0 auto;
+  text-align: center;
+  color: #505050;
+  margin-top: 20px;
 }
 
 /* ===========================

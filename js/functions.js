@@ -168,7 +168,7 @@ function eightMore() {
   voteMoreButton.setAttribute('style','visibility:hidden');
   displayButton.setAttribute('style','visibility:hidden');
   displayButton.removeEventListener('click', showResults);
-  //destroys charts
+  //destroys charts here as well ¯\_(ツ)_/¯ 
   clicksChartGlobal.destroy();
   percentChartGlobal.destroy();
 }

@@ -4,20 +4,16 @@ canvas charts
 =============
 */
 
-//+++++++++++++
 //array to store labels for chart
 var labelArray = [];
 
-//++++++++++
 //array to store Yaxis or clicks numbers for chart
 var yAxisArray = [];
 
-//++++++++++++++++
 //array to store yaxis or percent click per show rate
 var percentArray = [];
 
 //function for chart's labels
-
 var makeBarLabels = function() {
   for (var i = 0; i < productArray.length; i++) {
     labelArray[i] = productArray[i].name;

@@ -105,6 +105,14 @@ p {
 img {
   padding: 10px;
   margin: 0 auto;
+  transition-duration: .5s;
+}
+
+/*2D animation here*/
+
+img:hover {
+  transform: rotate(10deg)
+
 }
 
 #resultsDisplay {
@@ -190,11 +198,12 @@ a {
   color: #505050;
   border: 1px solid #fff;
   background: #fff;
-  padding: 10px;
+  padding: 10px 10px;
   margin: 0 auto;
   text-align: center;
   line-height: 15px;
   transition-duration: 0.7s;
+  transition-delay: .1s;
 
 }
 
@@ -209,14 +218,13 @@ a {
   line-height: 2em;
 }
 
+/*color transform here*/
 .nav a:hover {
   color: #fff;
   background-color: #505050;
-  border-radius: 40px;
 }
 
 .nav a:active {
-
 }
 
 .landing-text {
@@ -234,12 +242,40 @@ a {
   line-height: 2em;
 }
 
-.index-nav > a {
+.index-nav a {
   margin: 0 auto;
   text-align: center;
   color: #505050;
   margin-top: 20px;
 }
+
+.index-nav a:hover {
+  animation: pulse 2s infinite;
+  animation-direction: alternate;
+  color: #fff;
+  border-radius: 50px;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #AFBBC2;
+  }
+  50% {
+    background-color: #3C4043;
+  }
+  100% {
+    background-color: #000;
+  }
+}
+
+/*inimation on hover infinate and alternate with keyframes*/
+.index-nav-two a:hover {
+  color: #fff;
+  background: #505050;
+  animation: pulse 3s infinite;
+  animation-direction: alternate;
+}
+
 
 /* ===========================
   Media Queries
